@@ -4,15 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using MatrixApi.Filters;
 
 namespace MatrixApi.Controllers
 {
     public class ValuesController : ApiController
     {
         // GET api/values
+        [BaseAuthenticationFilter]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new[] { "value1", "value2" };
         }
 
         // GET api/values/5
