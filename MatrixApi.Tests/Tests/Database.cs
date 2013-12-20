@@ -59,7 +59,9 @@ namespace MatrixApi.Tests.Tests
             session.Save(project);
             var ticket = new Ticket { Project = project, Title = "Test Ticket", Description = "Test test" };
             session.Save(ticket);
-            var comment = new Comment { Body = "This is a comment", CreatedAt = DateTime.Now, Ticket = ticket };
+            var user = new User { Name = "Neo", Email = "Neo@thematrix.com", Password = "Neo" };
+            session.Save(user);
+            var comment = new Comment { Body = "This is a comment", CreatedAt = DateTime.Now, Ticket = ticket, User = user };
             session.Save(comment);
 
             NHibernateHelper.CloseSession();

@@ -144,6 +144,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Domain\Comment.cs" />
     <Compile Include="Domain\Enums.cs" />
     <Compile Include="Domain\FakeData.cs" />

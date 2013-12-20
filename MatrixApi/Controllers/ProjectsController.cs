@@ -6,10 +6,10 @@ using MatrixApi.Helpers;
 
 namespace MatrixApi.Controllers
 {
+    //[BasicAuthenticationFilter]
     public class ProjectsController : ApiController
     {
         // GET api/projects
-        //[BaseAuthenticationFilter]
         public IEnumerable<Project> Get()
         {
             using (var session = NHibernateHelper.GetCurrentSession())
@@ -45,16 +45,13 @@ namespace MatrixApi.Controllers
         // POST api/projects
         public void Post([FromBody] string value)
         {
+            // TODO
         }
 
         // PUT api/projects/5
         public void Put(int id, [FromBody] string value)
         {
-        }
-
-        // DELETE api/projects/5
-        public void Delete(int id)
-        {
+            // TODO
         }
     }
 }

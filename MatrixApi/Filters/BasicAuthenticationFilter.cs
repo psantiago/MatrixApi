@@ -1,4 +1,8 @@
-﻿using System.Web.Http.Controllers;
+﻿using System.Linq;
+using System.Web.Http.Controllers;
+using MatrixApi.Domain;
+using MatrixApi.Helpers;
+using NHibernate.Linq;
 
 namespace MatrixApi.Filters
 {
@@ -15,9 +19,11 @@ namespace MatrixApi.Filters
 
         protected override bool OnAuthorizeUser(string username, string password, HttpActionContext actionContext)
         {
-            // TODO check the username and password against the database
-
-            return true;
+            using (var session = NHibernateHelper.GetCurrentSession())
+            {
+                var result = session.Query<User>().FirstOrDefault(u => u.Email == username && u.Password == password);
+                return result != null;
+            }
         }
     }
 }
