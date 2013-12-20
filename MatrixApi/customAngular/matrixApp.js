@@ -78,10 +78,10 @@ matrixApp.controller('ProjectCreateController', function ($scope, $http, project
 
 matrixApp.controller('TicketCreateController', function ($scope, $http, projectFactory, $routeParams, $location) {
 
-    var projectId = $routeParams.projectId;
+    $scope.projectId = $routeParams.projectId;
 
     // push to server, get returned id?
-    $scope.addComment = function () {
+    $scope.addTicket = function () {
         // push to server, get returned id?
         $http.post("/API/tickets", $scope.newTicket)
         .success(function (data, status, headers, config) {
