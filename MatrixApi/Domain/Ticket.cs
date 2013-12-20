@@ -1,4 +1,6 @@
 ﻿using System;
+using NHibernate.Mapping;
+using System.Collections.Generic;
 
 namespace MatrixApi.Domain
 {
@@ -12,5 +14,6 @@ namespace MatrixApi.Domain
         public DateTime? Deadline { get; set; }
         public User User { get; set; }
 
+        public List<Comment> Comments { get; set; }
     }
 }
