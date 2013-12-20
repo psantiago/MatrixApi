@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Web;
 using MatrixApi.Domain;
 using MatrixApi.Helpers;
-using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using Xunit;
@@ -23,30 +21,41 @@ namespace MatrixApi.Tests.Tests
         {
             var cfg = new Configuration();
             cfg.Configure();
-            cfg.AddAssembly(typeof(Project).Assembly);
 
             new SchemaExport(cfg).Execute(true, false, false);
         }
 
         [Fact]
-        public void EverythingWorks()
+        public void CanInsertProject()
         {
             var session = NHibernateHelper.GetCurrentSession();
 
-            var tx = session.BeginTransaction();
-
-            var project = new Project {Title = "Test", Description = "test"};
+            var project = new Project { Title = "Test", Description = "test" };
             session.Save(project);
+            
+            NHibernateHelper.CloseSession();
+        }
 
-            tx.Commit();
+        [Fact]
+        public void CanInsertTicket()
+        {
+            var session = NHibernateHelper.GetCurrentSession();
+
+            var project = new Project { Title = "Test", Description = "test" };
+            session.Save(project);
+            var ticket = new Ticket { Project = project, Title = "Test Ticket", Description = "Test test" };
+            session.Save(ticket);
 
             NHibernateHelper.CloseSession();
         }
 
 
+
+
         public void Dispose()
         {
             HttpContext.Current = null;
+
         }
     }
 }
