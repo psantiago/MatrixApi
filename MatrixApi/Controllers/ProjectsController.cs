@@ -45,13 +45,19 @@ namespace MatrixApi.Controllers
         // POST api/projects
         public void Post([FromBody] string value)
         {
-            // TODO
+            using (var session = NHibernateHelper.GetCurrentSession())
+            {
+                session.Save(value);
+            }
         }
 
         // PUT api/projects/5
         public void Put(int id, [FromBody] string value)
         {
-            // TODO
+            using (var session = NHibernateHelper.GetCurrentSession())
+            {
+                session.Update(value);
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace MatrixApi.Controllers
 {
     public class TicketsController : ApiController
     {
-        // GET api/<controller>/5
+        // GET api/tickets/5
         public Ticket Get(int id)
         {
             using (var session = NHibernateHelper.GetCurrentSession())
@@ -16,16 +16,22 @@ namespace MatrixApi.Controllers
             }
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        // POST api/tickets
+        public void Post([FromBody]Ticket value)
         {
-            // TODO
+            using (var session = NHibernateHelper.GetCurrentSession())
+            {
+                session.Save(value);
+            }
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/tickets/5
+        public void Put(int id, [FromBody]Ticket value)
         {
-            // TODO
+            using (var session = NHibernateHelper.GetCurrentSession())
+            {
+                session.Update(value);
+            }
         }
     }
 }
