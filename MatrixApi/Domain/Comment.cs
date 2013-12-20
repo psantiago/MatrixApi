@@ -9,5 +9,6 @@ namespace MatrixApi.Domain
         public virtual User User { get; set; }
         public virtual Ticket Ticket { get; set; }
         public virtual DateTime CreatedAt { get; set; }
+        public virtual int TicketId { get; set; }
     }
 }
