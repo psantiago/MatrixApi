@@ -54,23 +54,18 @@ matrixApp.controller('TicketController', function ($scope, $http, projectFactory
     });
 
     $scope.addComment = function () {
-        var Body = $scope.newComment.Body;
-        // push to server, get returned id?
-
-        // push into object ?
-        //$scope.ticket.Comments.push();
-
-        var id = 1;
-        // redirect to project
-        $location.path("/ticket/" + $scope.ticket.Id);
+        $http.post("/API/comments", $scope.newComment)
+        .success(function (data, status, headers, config) {
+            $location.path("/ticket/" + $routeParams.ticketId);
+        }).error(function (data, status, headers, config) {
+            alert("error");
+        });
     };
 
 });
 
 matrixApp.controller('ProjectCreateController', function ($scope, $http, projectFactory, $location) {
     $scope.addProject = function () {
-        var Title = $scope.newProject.Title;
-
         // push to server, get returned id?
         $http.post("/API/projects", $scope.newProject)
         .success(function (data, status, headers, config) {
@@ -87,8 +82,13 @@ matrixApp.controller('TicketCreateController', function ($scope, $http, projectF
 
     // push to server, get returned id?
     $scope.addComment = function () {
-        // redirect to ticket
-        $location.path("/ticket/" + id);
+        // push to server, get returned id?
+        $http.post("/API/tickets", $scope.newTicket)
+        .success(function (data, status, headers, config) {
+            $location.path("/project/" + $routeParams.projectId);
+        }).error(function (data, status, headers, config) {
+            alert("error");
+        });
     };
 });
 
