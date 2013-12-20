@@ -163,11 +163,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-<<<<<<< HEAD
     <Content Include="Scripts\angular\angular.min.js" />
-=======
     <EmbeddedResource Include="Mappings\Project.hbm.xml" />
->>>>>>> f76ff6e9850bd8c630ab7bda8a83daf78f87ee09
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
