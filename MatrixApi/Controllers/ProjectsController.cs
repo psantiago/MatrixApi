@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using MatrixApi.Domain;
 using MatrixApi.Filters;
+using MatrixApi.Helpers;
 
 namespace MatrixApi.Controllers
 {
@@ -106,6 +107,17 @@ namespace MatrixApi.Controllers
         // GET api/values/5
         public string Get(int id)
         {
+            var session = NHibernateHelper.GetCurrentSession();
+
+            var tx = session.BeginTransaction();
+
+            var project = new Project { Title = "Test", Description = "test" };
+            session.Save(project);
+
+            tx.Commit();
+
+            NHibernateHelper.CloseSession();
+
             return "value";
         }
 

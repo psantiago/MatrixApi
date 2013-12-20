@@ -12,8 +12,10 @@
     <property name="Priority" />
     <property name="Status" />
     <property name="Deadline" />
+    <many-to-one name="Project" column="ProjectId"/>
+    <!--
     <many-to-one name="User" class="User" column="UserId" unique="true"/>
-    <many-to-one name="Comments" class="Comment" column="CommentId"/>
+    -->
   </class>
 
 </hibernate-mapping>
