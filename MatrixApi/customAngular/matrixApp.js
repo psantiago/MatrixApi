@@ -1,5 +1,5 @@
 ﻿var jsonURL = "http://localhost:16185";
-var matrixApp = angular.module('matrixApp', []);
+var matrixApp = angular.module('matrixApp', ['ngRoute']);
 
 matrixApp.factory('projectFactory', function ($http) {
 
@@ -19,14 +19,38 @@ matrixApp.controller('ProjectController', function ($scope, $http, projectFactor
 
     var projects = [];
 
+    $scope.projects = [];
+
+    init();
+
+    function init() {
+        $scope.projects = projectFactory.getProjects();
+    }
+
     $http.get('/API/PROJECTS?json=true').success(function (data, status, headers, config) {
-        alert(data);
         // you can do some processing here
         $scope.projects = data;
     }).error(function (data, staus, headers, config) { });
 
     
 });
+
+
+matrixApp.config(function ($routeProvider) {
+    $routeProvider
+        .when('/',
+            {
+                controller: 'ProjectController',
+                templateUrl: 'Partials/Projects.html'
+            })
+        .when('/tickets',
+            {
+                controller: 'ProjectController',
+                templateUrl: 'Partials/Tickets.html'
+            })
+        .otherwise({ redirectTo: '/' });
+});
+
 
 /*
 matrixApp.factory('allData', function ($http) {
