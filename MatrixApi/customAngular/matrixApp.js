@@ -1,6 +1,8 @@
 ﻿var jsonURL = "http://localhost:16185";
 var matrixApp = angular.module('matrixApp', ['ngRoute']);
 
+var user = [];
+
 matrixApp.factory('projectFactory', function ($http) {
 
     var factory = {};
@@ -70,10 +72,12 @@ matrixApp.controller('ProjectCreateController', function ($scope, $http, project
         var Title = $scope.newProject.Title;
 
         // push to server, get returned id?
-
-        var id = 1;
-        // redirect to project
-        $location.path("/projects/" + id);
+        $http.post("/API/projects", $scope.newProject)
+        .success(function (data, status, headers, config) {
+            $location.path("/projects/");
+        }).error(function (data, status, headers, config) {
+            alert("error");
+        });
     };
 });
 
@@ -83,9 +87,28 @@ matrixApp.controller('TicketCreateController', function ($scope, $http, projectF
 
     // push to server, get returned id?
     $scope.addComment = function () {
-        var id = 1;
         // redirect to ticket
         $location.path("/ticket/" + id);
+    };
+});
+
+matrixApp.controller('LoginController', function ($scope, $http, projectFactory, $location) {
+
+    // push to server, get returned id?
+    $scope.login = function () {
+        user = $scope.user;
+        // redirect to ticket
+        $location.path("/projects");
+    };
+});
+
+matrixApp.controller('LogoutController', function ($scope, $http, projectFactory, $location) {
+
+    // push to server, get returned id?
+    $scope.logout = function () {
+        user = [];
+        // redirect to ticket
+        $location.path("/login");
     };
 });
 
@@ -115,6 +138,16 @@ matrixApp.config(function ($routeProvider) {
             {
                 controller: 'TicketController',
                 templateUrl: 'Partials/Ticket.html'
+            })
+        .when('/login',
+            {
+                controller: 'LoginController',
+                templateUrl: 'Partials/Login.html'
+            })
+        .when('/logout',
+            {
+                controller: 'LogoutController',
+                templateUrl: 'Partials/Logout.html'
             })
         .otherwise({ redirectTo: '/projects' });
 });
