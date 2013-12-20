@@ -152,6 +152,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -168,6 +169,14 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\macgyver\macgyver-core.js" />
+    <Content Include="Scripts\macgyver\macgyver-datepicker.js" />
+    <Content Include="Scripts\macgyver\macgyver-fileupload.js" />
+    <Content Include="Scripts\macgyver\macgyver-filters.js" />
+    <Content Include="Scripts\macgyver\macgyver-string-filter.js" />
+    <Content Include="Scripts\macgyver\macgyver-table.js" />
+    <Content Include="Scripts\macgyver\macgyver.js" />
+    <Content Include="Scripts\macgyver\macgyver.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -187,6 +196,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
