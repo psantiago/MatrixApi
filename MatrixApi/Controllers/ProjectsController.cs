@@ -6,9 +6,16 @@ using MatrixApi.Helpers;
 namespace MatrixApi.Controllers
 {
     //[BasicAuthenticationFilter]
+    /// <summary>
+    /// This is a test
+    /// </summary>
     public class ProjectsController : ApiController
     {
         // GET api/projects
+        /// <summary>
+        /// This is a tretstegwe
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Project> Get()
         {
             using (var session = NHibernateHelper.GetCurrentSession())
@@ -19,7 +26,6 @@ namespace MatrixApi.Controllers
 
         }
 
-        // GET api/projects/5
         /// <summary>
         /// Test
         /// </summary>
@@ -49,7 +55,7 @@ namespace MatrixApi.Controllers
         } 
 
         // POST api/projects
-        public void Post([FromBody] string value)
+        public void Post([FromBody]Project value)
         {
             using (var session = NHibernateHelper.GetCurrentSession())
             {
@@ -58,7 +64,7 @@ namespace MatrixApi.Controllers
         }
 
         // PUT api/projects/5
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody]Project value)
         {
             using (var session = NHibernateHelper.GetCurrentSession())
             {

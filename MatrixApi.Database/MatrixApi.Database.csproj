@@ -57,6 +57,7 @@
     <Content Include="scripts\Create\0001-Install.sql" />
     <Content Include="scripts\Create\placeholder.txt" />
     <Content Include="scripts\Seed\placeholder.txt" />
+    <Content Include="scripts\Create\0002-TheMatixSeedData.sql" />
     <Content Include="scripts\Update\placeholder.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
