@@ -10,7 +10,6 @@
     <property name="Name" />
     <property name="Password" />
     <property name="Email" />
-
   </class>
 
 </hibernate-mapping>

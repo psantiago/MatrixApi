@@ -9,8 +9,8 @@
     </id>
     <property name="Body" />
     <property name="CreatedAt" />
-    <many-to-one name="User" class="User" column="UserId" unique="true" />
-    <many-to-one name="Ticket" column="TicketId" />
+    <many-to-one name="User" class="User" column="UserId" unique="true" lazy="false" />
+    <many-to-one name="Ticket" column="TicketId" lazy="false" />
   </class>
 
 </hibernate-mapping>

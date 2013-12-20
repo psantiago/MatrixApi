@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 using MatrixApi.Domain;
 using MatrixApi.Helpers;
@@ -21,6 +20,11 @@ namespace MatrixApi.Controllers
         }
 
         // GET api/projects/5
+        /// <summary>
+        /// Test
+        /// </summary>
+        /// <param name="id">test</param>
+        /// <returns>test</returns>
         public Project Get(int id)
         {
             using (var session = NHibernateHelper.GetCurrentSession())
@@ -31,7 +35,9 @@ namespace MatrixApi.Controllers
         }
 
         // GET api/projects/5/tickets
-        [AcceptVerbs("GET", "POST")]
+
+        
+        [AcceptVerbs("GET")]
         [Route("api/projects/{id}/tickets")]
         public IEnumerable<Ticket> Tickets(int id)
         {
