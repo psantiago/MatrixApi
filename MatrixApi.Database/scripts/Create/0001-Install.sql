@@ -66,7 +66,7 @@ CREATE TABLE [dbo].[Comment] (
 	[TicketId] [int] NOT NULL,
 	[CreatedAt] [datetime] NOT NULL,
 
-	CONSTRAINT [PK_Ticket] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_Comment] PRIMARY KEY CLUSTERED 
 	(
 		[Id] ASC
 	) 

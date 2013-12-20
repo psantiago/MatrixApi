@@ -54,6 +54,7 @@
   <ItemGroup>
     <Content Include="Readme.txt" />
     <Content Include="scripts\AliaSQL.exe" />
+    <Content Include="scripts\Create\0001-Install.sql" />
     <Content Include="scripts\Create\placeholder.txt" />
     <Content Include="scripts\Seed\placeholder.txt" />
     <Content Include="scripts\Update\placeholder.txt" />

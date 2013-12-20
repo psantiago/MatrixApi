@@ -12,6 +12,7 @@
       <property name="Priority" />
       <property name="Status" />
       <property name="Deadline" />
+      <many-to-one name="Tickets" class="Ticket" column="TicketId"/>
   </class>
 
 </hibernate-mapping>
