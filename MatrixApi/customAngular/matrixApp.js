@@ -15,40 +15,62 @@ matrixApp.factory('projectFactory', function ($http) {
     return factory;
 });
 
-matrixApp.controller('ProjectController', function ($scope, $http, projectFactory) {
+matrixApp.controller('ProjectListController', function ($scope, $http, projectFactory) {
 
-    var projects = [];
 
     $scope.projects = [];
-
-    init();
-
-    function init() {
-        $scope.projects = projectFactory.getProjects();
-    }
 
     $http.get('/API/PROJECTS?json=true').success(function (data, status, headers, config) {
         // you can do some processing here
         $scope.projects = data;
-    }).error(function (data, staus, headers, config) { });
+    });
 
     
 });
+matrixApp.controller('ProjectController', function ($scope, $http, projectFactory, $routeParams) {
 
+    var projectId = $routeParams.projectId;
+
+    $scope.projects = [];
+
+    $http.get('/API/PROJECTS/' + projectId + '?json=true').success(function (data, status, headers, config) {
+        // you can do some processing here
+        $scope.project = data;
+    });
+
+});
+
+matrixApp.controller('TicketController', function ($scope, $http, projectFactory, $routeParams) {
+
+    var ticketId = $routeParams.ticketId;
+
+    $scope.projects = [];
+
+    $http.get('/API/TICKETS/' + ticketId + '?json=true').success(function (data, status, headers, config) {
+        // you can do some processing here
+        $scope.ticket = data;
+    });
+
+});
 
 matrixApp.config(function ($routeProvider) {
     $routeProvider
-        .when('/',
+        .when('/projects',
+            {
+                controller: 'ProjectListController',
+                templateUrl: 'Partials/ProjectList.html'
+            })
+        .when('/projects/:projectId',
             {
                 controller: 'ProjectController',
-                templateUrl: 'Partials/Projects.html'
+                templateUrl: 'Partials/Project.html'
             })
-        .when('/tickets',
+        .when('/tickets/:ticketId',
             {
-                controller: 'ProjectController',
-                templateUrl: 'Partials/Tickets.html'
+                controller: 'TicketController',
+                templateUrl: 'Partials/Ticket.html'
             })
-        .otherwise({ redirectTo: '/' });
+        .otherwise({ redirectTo: '/projects' });
 });
 
 

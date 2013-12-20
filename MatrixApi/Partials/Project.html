@@ -1,0 +1,13 @@
+﻿
+<div >
+
+        <h2>{{ project.Title }}</h2>
+        <p>{{ project.Description }}</p>
+
+        <div data-ng-repeat="ticket in project.Tickets">
+            <a class="comment" href="#/tickets/{{ ticket.Id}}">
+                <p>{{ ticket.Title }}</p>
+
+            </a>
+        </div>
+</div>

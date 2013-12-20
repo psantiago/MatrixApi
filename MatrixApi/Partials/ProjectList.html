@@ -1,10 +1,10 @@
 ﻿
 <div class="flexbox-inline" data-ng-repeat="project in projects">
 
-    <a class="flex-panel" href="">
+    <a class="flex-panel" href="#/projects/{{ project.Id }}">
 
         <h2>{{ project.Title }}</h2>
-        <span>2 tickets</span>
+        <span>{{ project.Tickets.length }} tickets</span>
 
     </a>
 

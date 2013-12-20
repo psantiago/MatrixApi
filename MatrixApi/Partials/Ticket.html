@@ -1,0 +1,13 @@
+﻿
+<div >
+
+        <h2>{{ ticket.Title }}</h2>
+        <p>{{ ticket.Description }}</p>
+
+        <div data-ng-repeat="comment in ticket.comments">
+            <div class="comment">
+                <p>{{ comment.Body }}</p>
+
+            </div>
+        </div>
+</div>

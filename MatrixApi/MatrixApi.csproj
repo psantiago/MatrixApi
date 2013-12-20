@@ -172,6 +172,10 @@
     <EmbeddedResource Include="Mappings\Comment.hbm.xml" />
     <EmbeddedResource Include="Mappings\Ticket.hbm.xml" />
     <EmbeddedResource Include="Mappings\User.hbm.xml" />
+    <Content Include="Partials\Project.html" />
+    <Content Include="Partials\Ticket.html" />
+    <Content Include="Partials\ProjectList.html" />
+    <Content Include="Partials\Tickets.html" />
     <Content Include="Scripts\angular\angular.min.js" />
     <EmbeddedResource Include="Mappings\Project.hbm.xml">
       <SubType>Designer</SubType>
