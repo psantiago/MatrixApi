@@ -1,6 +1,9 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background: #f2f2f2;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -13,7 +16,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+   
 }
 
 /* styles for validation helpers */
@@ -40,3 +43,63 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.container {
+    width: 100%;
+}
+
+/* FLEXBOX GENERIC SHIT */
+[class*="flexbox"] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flexbox-wrapper.center {
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 100%; 
+}
+
+.login-box {
+    width: 40%;
+}
+
+.login-input {
+    border: none;
+    display: block;
+    width: 100%;
+    font-size: 1.25em;
+    line-height: 1em;
+    margin: 0;
+}
+
+.login-input:last-of-type {
+    border-top: .0625em solid #ccc;
+}
+
+[class*="button"] {
+    padding: .5em;
+    border:none;
+    border-radius: .125em;
+    font-size: 1em;
+    line-height: 2em;
+}
+
+[class*="-submit"] {
+    background: #4ccc6a;
+}
+
+[class*="-login"] {
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+/* LOGN STYLES */
+
