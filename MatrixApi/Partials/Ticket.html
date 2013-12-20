@@ -13,7 +13,7 @@
 
         <div>
             <!-- Create Comment Form -->
-
+            <input type="hidden" data-ng-model="newComment.TicketId" value="{{ ticket.Id }}" />
             <input type="text" data-ng-model="newComment.Body" />
 
             <button data-ng-click="addComment()">Add Comment</button>
