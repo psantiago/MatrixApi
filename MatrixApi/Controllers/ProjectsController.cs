@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using MatrixApi.Domain;
+using MatrixApi.Helpers;
 
 namespace MatrixApi.Controllers
 {
@@ -11,15 +12,22 @@ namespace MatrixApi.Controllers
         //[BaseAuthenticationFilter]
         public IEnumerable<Project> Get()
         {
-            var projects = FakeData.GetSomeProjects();
-            return projects;
+            using (var session = NHibernateHelper.GetCurrentSession())
+            {
+                var result = session.CreateCriteria<Project>().List<Project>();
+                return result;
+            }
+
         }
 
         // GET api/projects/5
         public Project Get(int id)
         {
-            var projects = FakeData.GetSomeProjects();
-            return projects.First();
+            using (var session = NHibernateHelper.GetCurrentSession())
+            {
+                var result = session.Get<Project>(id);
+                return result;
+            }
         }
 
         // GET api/projects/5/tickets
@@ -27,9 +35,11 @@ namespace MatrixApi.Controllers
         [Route("api/projects/{id}/tickets")]
         public IEnumerable<Ticket> Tickets(int id)
         {
-            var projects = FakeData.GetSomeProjects();
-            var tickets = projects.First(p => p.Id == id).Tickets;
-            return tickets;
+            using (var session = NHibernateHelper.GetCurrentSession())
+            {
+                var result = session.Get<Project>(id);
+                return result.Tickets;
+            }
         } 
 
         // POST api/projects

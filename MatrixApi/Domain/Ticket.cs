@@ -6,6 +6,8 @@ namespace MatrixApi.Domain
 {
     public class Ticket
     {
+        private IList<Comment> _comments = new List<Comment>();
+
         public virtual int Id { get; set; }
         public virtual string Title { get; set; }
         public virtual string Description { get; set; }
@@ -13,7 +15,13 @@ namespace MatrixApi.Domain
         public virtual Status Status { get; set; }
         public virtual DateTime? Deadline { get; set; }
         public virtual User User { get; set; }
-        public virtual List<Comment> Comments { get; set; }
+
+        public virtual IList<Comment> Comments
+        {
+            get { return _comments; }
+            set { _comments = value; }
+        }
+
         public virtual Project Project { get; set; }
     }
 }

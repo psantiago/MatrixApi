@@ -3,7 +3,7 @@
                    assembly="MatrixApi"
                    namespace="MatrixApi.Domain">
 
-  <class name="User">
+  <class name="User" table="[User]">
     <id name="Id">
       <generator class="identity" />
     </id>

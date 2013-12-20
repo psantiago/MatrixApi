@@ -13,7 +13,7 @@
     <property name="Status" />
     <property name="Deadline" />
     <many-to-one name="Project" column="ProjectId"/>
-    <bag name="Comments" cascade="all-delete-orphan" inverse="true">
+    <bag name="Comments" lazy="false">
       <key column="TicketId" />
       <one-to-many class="Comment" />
     </bag>
