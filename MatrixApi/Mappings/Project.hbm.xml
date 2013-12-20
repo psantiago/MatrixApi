@@ -12,7 +12,10 @@
       <property name="Priority" />
       <property name="Status" />
       <property name="Deadline" />
-      <many-to-one name="Tickets" class="Ticket" column="TicketId"/>
+      <bag name="Tickets" cascade="all-delete-orphan" inverse="true">
+        <key column="ProjectId" />
+        <one-to-many class="Ticket" />
+      </bag>
   </class>
 
 </hibernate-mapping>
