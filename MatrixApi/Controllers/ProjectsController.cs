@@ -10,9 +10,9 @@ namespace MatrixApi.Controllers
     {
         // GET api/values
         //[BaseAuthenticationFilter]
-        public IEnumerable<string> Get()
+        public IEnumerable<Project> Get()
         {
-            var Project1 = new Project
+            var project1 = new Project
                            {
                                Deadline = DateTime.Now.AddDays(7),
                                Description = "Further down the rabbit hole",
@@ -22,7 +22,7 @@ namespace MatrixApi.Controllers
                                Title = "The Blue Pill"
                            };
 
-            var Project2 = new Project()
+            var project2 = new Project()
                            {
                                Deadline = DateTime.Now.AddHours(1),
                                Description = "Noodle baking",
@@ -31,7 +31,7 @@ namespace MatrixApi.Controllers
                                Status = Status.InProgress,
                                Title = "There is no spoon"
                            };
-            return new[] { "value1", "value2" };
+            return new[] { project1, project2 };
         }
 
         // GET api/values/5
