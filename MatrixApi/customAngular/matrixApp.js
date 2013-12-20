@@ -51,6 +51,42 @@ matrixApp.controller('TicketController', function ($scope, $http, projectFactory
         $scope.ticket = data;
     });
 
+    $scope.addComment = function () {
+        var Body = $scope.newComment.Body;
+        // push to server, get returned id?
+
+        // push into object ?
+        //$scope.ticket.Comments.push();
+
+        var id = 1;
+        // redirect to project
+        $location.path("/ticket/" + $scope.ticket.Id);
+    };
+
+});
+
+matrixApp.controller('ProjectCreateController', function ($scope, $http, projectFactory, $location) {
+    $scope.addProject = function () {
+        var Title = $scope.newProject.Title;
+
+        // push to server, get returned id?
+
+        var id = 1;
+        // redirect to project
+        $location.path("/projects/" + id);
+    };
+});
+
+matrixApp.controller('TicketCreateController', function ($scope, $http, projectFactory, $routeParams, $location) {
+
+    var projectId = $routeParams.projectId;
+
+    // push to server, get returned id?
+    $scope.addComment = function () {
+        var id = 1;
+        // redirect to ticket
+        $location.path("/ticket/" + id);
+    };
 });
 
 matrixApp.config(function ($routeProvider) {
@@ -60,10 +96,20 @@ matrixApp.config(function ($routeProvider) {
                 controller: 'ProjectListController',
                 templateUrl: 'Partials/ProjectList.html'
             })
+        .when('/project/create',
+            {
+                controller: 'ProjectCreateController',
+                templateUrl: 'Partials/ProjectCreate.html'
+            })
         .when('/projects/:projectId',
             {
                 controller: 'ProjectController',
                 templateUrl: 'Partials/Project.html'
+            })
+        .when('/projects/:projectId/create',
+            {
+                controller: 'TicketCreateController',
+                templateUrl: 'Partials/TicketCreate.html'
             })
         .when('/tickets/:ticketId',
             {

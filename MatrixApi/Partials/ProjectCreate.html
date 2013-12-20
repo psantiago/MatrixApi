@@ -1,0 +1,18 @@
+﻿
+<div >
+    <input type="text" data-ng-model="newProject.Title" />
+    <input type="text" data-ng-model="newProject.Description" />
+    <select data-ng-model="newProject.Priority" >
+        <option value="1">Low</option>
+        <option value="2">Medium</option>
+        <option value="3">High</option>
+    </select>
+    <select data-ng-model="newProject.Status" >
+        <option value="1">In Progress</option>
+        <option value="2">Complete</option>
+        <option value="3">Pending</option>
+    </select>
+    <input type="date" data-ng-model="newProject.Deadline" />
+
+    <button data-ng-click="addProject()">Add Project</button>
+</div>
