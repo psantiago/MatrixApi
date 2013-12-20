@@ -5,9 +5,14 @@
 
   <class name="Project">
       <id name="Id">
-          <generator class="int" />
+          <generator class="identity" />
       </id>
-      <property name="Name" />
+      <property name="Title" />
+      <property name="Description" />
+      <property name="Priority" />
+      <property name="Status" />
+      <property name="Deadline" />
+      <many-to-one name="Tickets" class="Ticket" column="TicketId"/>
   </class>
 
 </hibernate-mapping>

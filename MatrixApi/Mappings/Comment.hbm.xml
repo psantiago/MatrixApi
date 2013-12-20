@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="MatrixApi"
+                   namespace="MatrixApi.Domain">
+
+  <class name="Comment">
+    <id name="Id">
+      <generator class="identity" />
+    </id>
+    <property name="Body" />
+    <property name="CreatedAt" />
+    <many-to-one name="User" class="User" column="UserId" unique="true"/>
+    <many-to-one name="Ticket" class="Ticket" column="TicketId" unique="true"/>
+
+  </class>
+
+</hibernate-mapping>

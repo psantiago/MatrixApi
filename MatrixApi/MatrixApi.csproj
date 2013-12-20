@@ -153,6 +153,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\NHibernateHelper.cs" />
     <Compile Include="Models\BasicAuthenticationIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,8 +165,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <EmbeddedResource Include="Mappings\Comment.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Ticket.hbm.xml" />
+    <EmbeddedResource Include="Mappings\User.hbm.xml" />
     <Content Include="Scripts\angular\angular.min.js" />
-    <EmbeddedResource Include="Mappings\Project.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Project.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
