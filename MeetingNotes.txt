@@ -1,0 +1,65 @@
+Project management (trello)
+The Matrix
+
+Endpoints
+
+Login
+Logout
+Create Project
+Create Ticket
+Reassign Ticket
+Status Comment on Ticket
+See Project List
+See Ticket List of Project
+Change Ticket Status
+Change Project Status
+List of Users
+
+Technologies
+Angular
+Myth
+.NET Web API 
+Entity Framework
+Basic Authentication
+
+
+Models
+Project Model
+Ticket Model
+User Model
+Comment Model
+
+Project
+Title
+Description
+Priority
+Status
+Deadline
+List of Tickets
+
+Ticket
+Title 
+Description
+Priority
+Status
+Deadline
+Single user
+Multiple comments
+
+Comment
+Body
+User created
+Ticket
+Time
+
+Status
+In progress
+Complete
+Pending
+
+Azure Web API
+
+
+Azure
+neo
+Red1orBlue1
