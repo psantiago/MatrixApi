@@ -165,7 +165,14 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="customAngular\matrixApp.js" />
+    <Content Include="Matrix\controllers.js" />
+    <Content Include="Matrix\directives.js" />
+    <Content Include="Matrix\app.js" />
+    <Content Include="Matrix\factories.js" />
+    <Content Include="Matrix\filters.js" />
+    <Content Include="Matrix\routing.js" />
+    <Content Include="Matrix\routingConfig.js" />
+    <Content Include="Matrix\services.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
