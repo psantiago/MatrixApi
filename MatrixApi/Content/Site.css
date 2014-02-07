@@ -1,5 +1,8 @@
 ﻿/* VARIABLES */
 /* BASic bitches */
+.block {
+  display: block; }
+
 /* LAYOUT */
 [class*="-box"] {
   display: block;
@@ -22,6 +25,9 @@
 
 .info-title {
   margin: 0; }
+
+.project-tickets {
+  color: #888; }
 
 .project-description {
   padding: 2em; }
@@ -52,29 +58,29 @@
     .action-options [class*="fa-"].fa-trash-o:hover {
       color: red; }
 
-.create-box {
+.create-box, .ticket-box {
   background: #fff;
   border-top: 0.5em solid #222; }
-  .create-box .create-wrap {
+  .create-box .create-wrap, .ticket-box .create-wrap {
     padding: 2em; }
-  .create-box label {
+  .create-box label, .ticket-box label {
     width: 100%;
     display: block;
     font-size: 1.25em;
     margin: 0.5em 0 0.25em 0; }
-  .create-box input {
+  .create-box input, .ticket-box input {
     margin-bottom: 0.5em;
     font-size: 1em;
     line-height: 2em;
     height: 2em; }
-    .create-box input[type="text"] {
+    .create-box input[type="text"], .ticket-box input[type="text"] {
       width: 100%; }
-  .create-box select {
+  .create-box select, .ticket-box select {
     font-size: 1em;
     line-height: 2em;
     height: 2em;
     padding: 0.3215em 0; }
-  .create-box [class*="button-"] {
+  .create-box [class*="button-"], .ticket-box [class*="button-"] {
     display: block;
     margin-top: 0.5em; }
 
@@ -111,6 +117,15 @@ hr {
 
 .right {
   float: right; }
+
+.priority-3 {
+  color: red; }
+
+.priority-2 {
+  color: yellow; }
+
+.priority-1 {
+  color: green; }
 
 /* MODULE */
 /* State */
