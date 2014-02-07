@@ -18,7 +18,14 @@ namespace MatrixApi
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/Angular/angular.min.js",
-                      "~/customAngular/matrixApp.js",
+                      "~/Matrix/app.js",
+                      "~/Matrix/routing.js",
+                      "~/Matrix/routingConfig.js",
+                      "~/Matrix/controllers.js",
+                      "~/Matrix/directives.js",
+                      "~/Matrix/factories.js",
+                      "~/Matrix/filters.js",
+                      "~/Matrix/services.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
