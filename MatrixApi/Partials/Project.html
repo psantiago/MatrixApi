@@ -10,6 +10,10 @@
         <a class="comment" href="#/tickets/{{ ticket.Id}}">
             <span class="fa fa-ticket"></span> {{ ticket.Title }}
         </a>
+        <div class="action-options right">
+            <a ng-click="edit({{ticket.Id}})" class="edit-link"><i class="fa fa-pencil"></i></a>
+            <a ng-click="delete({{ticket.Id}})" class="delete-link"><i class="fa fa-trash-o"></i></a>
+        </div>
     </div>
 
 

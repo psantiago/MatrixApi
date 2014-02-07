@@ -1,18 +1,33 @@
-﻿<div >
-    <input type="hidden" data-ng-model="newTicket.ProjectId" value="{{projectId}}" />
-    <input type="text" data-ng-model="newTicket.Title" />
-    <input type="text" data-ng-model="newTicket.Description" />
-    <select data-ng-model="newTicket.Priority" >
-        <option value="1">Low</option>
-        <option value="2">Medium</option>
-        <option value="3">High</option>
-    </select>
-    <select data-ng-model="newTicket.Status" >
-        <option value="1">In Progress</option>
-        <option value="2">Complete</option>
-        <option value="3">Pending</option>
-    </select>
-    <input type="date" data-ng-model="newTicket.Deadline" />
+﻿
+<div class="create-box">
+    <div class="create-wrap">
+        <a class="back-link" href="javascript:history.back();"><span class="fa fa-arrow-circle-left"></span></a> <h2>Create Ticket</h2>
 
-    <button data-ng-click="addTicket()">Add Ticket</button>
+        <input type="hidden" data-ng-model="newTicket.ProjectId" value="{{projectId}}" />
+
+        <label>Title</label>
+        <input type="text" data-ng-model="newTicket.Title" />
+
+        <label>Description</label>
+        <input type="text" data-ng-model="newTicket.Description" />
+
+        <label>Priority</label>
+        <select data-ng-model="newTicket.Priority">
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+        </select>
+
+        <label>Status</label>
+        <select data-ng-model="newTicket.Status">
+            <option value="1">In Progress</option>
+            <option value="2">Complete</option>
+            <option value="3">Pending</option>
+        </select>
+
+        <label>Deadline</label>
+        <input type="date" data-ng-model="newTicket.Deadline" />
+
+        <button class="button-submit" data-ng-click="addTicket()"><span class="fa fa-ticket"></span> Add Ticket</button>
+    </div>
 </div>

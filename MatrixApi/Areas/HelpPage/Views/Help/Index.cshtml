@@ -10,15 +10,14 @@
     ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
 }
 
-<header>
-    <div class="content-wrapper">
+    <div class="content-wrapper-box">
         <div class="float-left">
             <h1>@ViewBag.Title</h1>
         </div>
     </div>
-</header>
-<div id="body">
-    <section class="featured">
+
+<div id="body" class="api-content-box">
+    <section class="featured wrap">
         <div class="content-wrapper">
             <h2>Introduction</h2>
             <p>
@@ -26,7 +25,7 @@
             </p>
         </div>
     </section>
-    <section class="content-wrapper main-content clear-fix">
+    <section class="content-wrapper main-content clear-fix wrap">
         @foreach (var group in apiGroups)
         {
             @Html.DisplayFor(m => group, "ApiGroup")

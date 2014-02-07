@@ -32,6 +32,10 @@
   border-top: 0.0625em solid #ccc; }
   .ticket-description:last-of-type {
     margin-bottom: 2em; }
+  .ticket-description .action-options {
+    font-size: 0.5em; }
+    .ticket-description .action-options [class*="-link"]:first-of-type {
+      margin-right: 0.5em; }
 
 .menu-title {
   padding: 2rem;
@@ -50,8 +54,9 @@
 
 .create-box {
   background: #fff;
-  padding: 2em;
   border-top: 0.5em solid #222; }
+  .create-box .create-wrap {
+    padding: 2em; }
   .create-box label {
     width: 100%;
     display: block;
@@ -73,9 +78,39 @@
     display: block;
     margin-top: 0.5em; }
 
+.ticket-box {
+  background: #fff;
+  border-top: 0.5em solid #222; }
+  .ticket-box .ticket-wrap {
+    padding: 2em; }
+  .ticket-box .comment {
+    width: 100%;
+    margin-bottom: 20px; }
+  .ticket-box .intstruction {
+    color: #999; }
+
 .back-link {
   display: inline-block;
   font-size: 1.25em; }
+
+hr {
+  height: 1px;
+  border: none;
+  background: #222; }
+
+.api-content-box {
+  background: #fff; }
+  .api-content-box h1 {
+    margin: 0; }
+
+.wrap {
+  padding: 2em; }
+
+.wrapped {
+  word-wrap: break-word; }
+
+.right {
+  float: right; }
 
 /* MODULE */
 /* State */
@@ -118,6 +153,8 @@ header .title, header .user-actions {
 
 header .user-actions {
   float: right; }
+  header .user-actions:last-of-type {
+    margin-right: 1em; }
 
 /* styles for validation helpers */
 .field-validation-error {
@@ -190,7 +227,8 @@ input[type="checkbox"].input-validation-error {
   border: none;
   border-radius: 0.125em;
   font-size: 1em;
-  line-height: 2em; }
+  line-height: 2em;
+  cursor: pointer; }
 
 [class*="-submit"] {
   background: #00fb00;
