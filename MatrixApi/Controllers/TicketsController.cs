@@ -43,5 +43,16 @@ namespace MatrixApi.Controllers
             var session = NHibernateHelper.GetCurrentSession();
             session.Update(value);
         }
+
+        /// <summary>
+        /// Deletes the specified ticket
+        /// </summary>
+        /// <param name="id">The ticket ID to delete</param>
+        public void Delete(int id)
+        {
+            var session = NHibernateHelper.GetCurrentSession();
+            var ticket = session.Get<Ticket>(id);
+            session.Delete(ticket);
+        }
     }
 }

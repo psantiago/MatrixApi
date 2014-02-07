@@ -452,6 +452,12 @@
             <param name="id">The project ID to update</param>
             <param name="value">The updated project to save</param>
         </member>
+        <member name="M:MatrixApi.Controllers.ProjectsController.Delete(System.Int32)">
+            <summary>
+            Deletes the specified project
+            </summary>
+            <param name="id">The project ID to delete</param>
+        </member>
         <member name="M:MatrixApi.Controllers.TicketsController.Get(System.Int32)">
             <summary>
             Fetches a ticket, "n", from the server using url api/ticekts/n
@@ -471,6 +477,12 @@
             </summary>
             <param name="id">The ticket ID to update</param>
             <param name="value">Updated ticket in the form post</param>
+        </member>
+        <member name="M:MatrixApi.Controllers.TicketsController.Delete(System.Int32)">
+            <summary>
+            Deletes the specified ticket
+            </summary>
+            <param name="id">The ticket ID to delete</param>
         </member>
         <member name="M:MatrixApi.Controllers.UsersController.Get">
             <summary>

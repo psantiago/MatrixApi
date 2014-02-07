@@ -86,5 +86,16 @@ namespace MatrixApi.Controllers
             var session = NHibernateHelper.GetCurrentSession();
             session.Update(value);
         }
+
+        /// <summary>
+        /// Deletes the specified project
+        /// </summary>
+        /// <param name="id">The project ID to delete</param>
+        public void Delete(int id)
+        {
+            var session = NHibernateHelper.GetCurrentSession();
+            var project = session.Get<Project>(id);
+            session.Delete(project);
+        }
     }
 }
