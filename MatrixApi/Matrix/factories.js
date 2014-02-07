@@ -1,9 +1,12 @@
 ﻿'use strict';
 
+
+
 matrixApp.factory('User', function ($http, $q, Base64) {
     var currentUser = [];
     function changeUser(user) {
         currentUser = user;
+        // local
     }
     return {
         login: function (user) {
@@ -31,6 +34,9 @@ matrixApp.factory('User', function ($http, $q, Base64) {
         },
         getCurrentUser: function () {
             return currentUser;
+        },
+        isLoggedIn: function () {
+            return currentUser.Id != null;
         }
     }
 });

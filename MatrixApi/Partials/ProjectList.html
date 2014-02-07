@@ -1,12 +1,17 @@
-﻿<a href="#/project/create">New Project</a>
+﻿<a class="menu-box" href="#/project/create"><span class="menu-title"><i class="fa fa-plus-circle"></i> New Project</span></a>
 
-<div class="flexbox-inline" data-ng-repeat="project in projects">
+<div class="project-box" data-ng-repeat="project in projects">
 
-    <a class="flex-panel" href="#/projects/{{ project.Id }}">
+    <a class="info-link" href="#/projects/{{ project.Id }}">
 
-        <h2>{{ project.Title }}</h2>
+        <h2 class="info-title">{{ project.Title }}</h2>
         <span>{{ project.Tickets.length }} tickets</span>
 
     </a>
+
+    <div class="action-options">
+        <a class="edit-link"><i class="fa fa-pencil"></i></a>
+        <a class="delete-link"><i class="fa fa-trash-o"></i></a>
+    </div>
 
 </div>
