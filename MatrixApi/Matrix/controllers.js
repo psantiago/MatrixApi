@@ -1,6 +1,6 @@
 ﻿
 
-matrixApp.controller('ProjectListController', function ($scope, $http, Projects) {
+matrixApp.controller('ProjectListController', function ($scope, $http, Projects, $location) {
     $scope.projects = [];
 
     init();
@@ -13,9 +13,21 @@ matrixApp.controller('ProjectListController', function ($scope, $http, Projects)
                 }
             );
     }
+    $scope.edit = function (projectId) {
+        $location.path("/projects/edit/" + projectId);
+    };
+
+    $scope.delete = function (project) {
+        Project.deleteProject(project.Id)
+            .then(
+                function (data) {
+                    project = null;
+                }
+            );
+    };
 });
 
-matrixApp.controller('ProjectController', function ($scope, $http, Projects, $routeParams) {
+matrixApp.controller('ProjectController', function ($scope, $http, Projects, $routeParams, $location) {
     var projectId = $routeParams.projectId;
     $scope.projects = [];
 
@@ -108,6 +120,7 @@ matrixApp.controller('TicketCreateController', function ($scope, $http, $routePa
     $scope.addTicket = function () {
         // push to server, get returned id?
         $http.post("/API/tickets", $scope.newTicket)
+
         Tickets.createTicket($scope.newTicket)
             .then(
                 function (data, status, headers, config) {
