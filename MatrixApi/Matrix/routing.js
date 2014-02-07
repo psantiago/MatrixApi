@@ -16,6 +16,11 @@ matrixApp.config(function ($routeProvider) {
                 controller: 'ProjectController',
                 templateUrl: 'Partials/Project.html'
             })
+        .when('/projects/edit/:projectId',
+            {
+                controller: 'ProjectEditController',
+                templateUrl: 'Partials/ProjectEdit.html'
+            })
         .when('/projects/:projectId/create',
             {
                 controller: 'TicketCreateController',

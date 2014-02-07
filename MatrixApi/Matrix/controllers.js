@@ -50,6 +50,30 @@ matrixApp.controller('ProjectCreateController', function ($scope, $http, Project
     };
 });
 
+matrixApp.controller('ProjectEditController', function ($scope, $http, Projects, $routeParams, $location) {
+    var projectId = $routeParams.projectId;
+
+    init();
+    function init() {
+        Projects.getProject(projectId)
+            .then(
+                function (data) {
+                    console.log(data)
+                    $scope.project = data;
+                }
+            );
+    }
+
+    $scope.editProject = function () {
+        Projects.editProject($scope.project)
+            .then(
+                function (data, status, headers, config) {
+                    $location.path("/projects/" + projectId);
+                }
+            );
+    };
+});
+
 matrixApp.controller('TicketController', function ($scope, $http, $routeParams, Tickets) {
 
     var ticketId = $routeParams.ticketId;
