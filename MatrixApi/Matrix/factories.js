@@ -30,14 +30,14 @@ matrixApp.factory('User', function ($http, $q, Base64) {
 
         },
         logout: function () {
-            currentUser = [];
+            changeUser(null);
             return true;
         },
         getCurrentUser: function () {
             return getCurrentUserFromLocalStorage();
         },
         isLoggedIn: function () {
-            return getCurrentUserFromLocalStorage().Id != null;
+            return getCurrentUserFromLocalStorage() != null;
         }
     }
 });
