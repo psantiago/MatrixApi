@@ -7,7 +7,21 @@
         <span class="block"><u>Deadline</u>:&nbsp; {{ project.Deadline | date:'medium' }}</span>
 
         <p><u>Descrition</u>:&nbsp;  {{ project.Description }}</p>
-        <br />
+        <p>
+            <u>Priority</u>:
+            <span ng-if="project.Priority == 1" class="priority-{{ project.Priority }}">Low</span>
+            <span ng-if="project.Priority == 2" class="priority-{{ project.Priority }}">Medium</span>
+            <span ng-if="project.Priority == 3" class="priority-{{ project.Priority }}">High</span>
+        </p>
+
+        <p>
+            <u>Status</u>:
+            <span ng-if="project.Status == 0">Unknown</span>
+            <span ng-if="project.Status == 1" class="priority-2">In Progress</span>
+            <span ng-if="project.Status == 2" class="priority-1">Completed</span>
+            <span ng-if="project.Status == 3" class="priority-3">Pending</span>
+        </p>
+
         <h4>Tickets:</h4>
     </div>
 

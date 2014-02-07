@@ -5,9 +5,15 @@
         <h3>{{ ticket.Title }}</h3>
         <p>{{ ticket.Description }}</p>
         <p><u>Deadline</u>:&nbsp; {{ ticket.Deadline }}</p>
-        <p><u>Priority</u>: <span class="priority-{{ ticket.Priority }}">{{ ticket.Priority }}</span></p>
+        <p><u>Priority</u>: 
+        <span ng-if="ticket.Priority == 1" class="priority-{{ ticket.Priority }}">Low</span>
+        <span ng-if="ticket.Priority == 2" class="priority-{{ ticket.Priority }}">Medium</span>
+        <span ng-if="ticket.Priority == 3" class="priority-{{ ticket.Priority }}">High</span>
+        </p>
 
-        <span ng-if="{{ ticket.Priority == 1}}">Low</span>
+        <hr />
+
+        <h3>Comments:</h3>
 
         <div data-ng-repeat="comment in ticket.comments">
             <div class="comment">
