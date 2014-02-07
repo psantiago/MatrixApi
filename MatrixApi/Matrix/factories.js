@@ -4,14 +4,15 @@
 
 matrixApp.factory('User', function ($http, $q, Base64) {
     function changeUser(user) {
-        sessionStorage.userService = angular.toJson(user)
+        localStorage.user = angular.toJson(user);
     }
     function getCurrentUserFromLocalStorage() {
-        return angular.fromJson(sessionStorage.userService);
+        return angular.fromJson(localStorage.user);
     }
     return {
         login: function (user) {
             var deferred = $q.defer();
+            console.log(user);
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.username + ':' + user.password);
             $http.get('/API/Users')
                 .success(
@@ -27,7 +28,6 @@ matrixApp.factory('User', function ($http, $q, Base64) {
                 );
 
             return deferred.promise;
-
         },
         logout: function () {
             changeUser(null);
@@ -37,7 +37,8 @@ matrixApp.factory('User', function ($http, $q, Base64) {
             return getCurrentUserFromLocalStorage();
         },
         isLoggedIn: function () {
-            return getCurrentUserFromLocalStorage() != null;
+            var user = getCurrentUserFromLocalStorage();
+            return user != null;
         }
     }
 });

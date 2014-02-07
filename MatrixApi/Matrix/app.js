@@ -2,6 +2,9 @@
 var matrixApp = angular.module('matrixApp', ['ngRoute']);
 
 
+
+
+
 matrixApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push(function ($q, $location) {
         return {
@@ -18,10 +21,17 @@ matrixApp.config(['$httpProvider', function ($httpProvider) {
     });
 }]);
 
-matrixApp.run(['$rootScope', '$location', 'User', function ($rootScope, $location, User) {
+matrixApp.run(['$rootScope', '$location', 'User', '$http', 'Base64', function ($rootScope, $location, User, $http, Base64) {
+    var user = angular.fromJson(localStorage.user);
+    console.log(user)
+    $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.Email + ':' + user.Password);
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         $rootScope.error = null;
         if (!User.isLoggedIn())
             $location.path('/login');
     });
 }]);
+
+function doThing() {
+   
+}

@@ -118,9 +118,7 @@ matrixApp.controller('TicketCreateController', function ($scope, $http, $routePa
 
     // push to server, get returned id?
     $scope.addTicket = function () {
-        // push to server, get returned id?
-        $http.post("/API/tickets", $scope.newTicket)
-
+        $scope.newTicket.ProjectId = $routeParams.projectId;
         Tickets.createTicket($scope.newTicket)
             .then(
                 function (data, status, headers, config) {
