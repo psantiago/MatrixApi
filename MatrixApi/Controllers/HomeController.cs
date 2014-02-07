@@ -4,6 +4,10 @@ namespace MatrixApi.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// The home page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
@@ -11,6 +15,10 @@ namespace MatrixApi.Controllers
             return View();
         }
 
+        /// <summary>
+        /// The login page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Login()
         {
             ViewBag.Title = "Home Page";

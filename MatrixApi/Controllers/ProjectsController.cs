@@ -11,11 +11,11 @@ namespace MatrixApi.Controllers
     /// </summary>
     public class ProjectsController : ApiController
     {
-        // GET api/projects
+
         /// <summary>
-        /// This is a tretstegwe
+        /// Fetches all projects with url api/projects
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of projects</returns>
         public IEnumerable<Project> Get()
         {
             using (var session = NHibernateHelper.GetCurrentSession())
@@ -27,10 +27,10 @@ namespace MatrixApi.Controllers
         }
 
         /// <summary>
-        /// Test
+        /// Fetches specified project "n" using url /api/Get/n
         /// </summary>
-        /// <param name="id">test</param>
-        /// <returns>test</returns>
+        /// <param name="id">The id of the project to fetch</param>
+        /// <returns>A Project</returns>
         public Project Get(int id)
         {
             using (var session = NHibernateHelper.GetCurrentSession())
@@ -40,9 +40,11 @@ namespace MatrixApi.Controllers
             }
         }
 
-        // GET api/projects/5/tickets
-
-        
+        /// <summary>
+        /// Fetch the ticekts that belong to a specified project "n" using url /api/projects/n/tickets
+        /// </summary>
+        /// <param name="id">The project id to which the tickets belong</param>
+        /// <returns>A list of Tickets</returns>
         [AcceptVerbs("GET")]
         [Route("api/projects/{id}/tickets")]
         public IEnumerable<Ticket> Tickets(int id)
@@ -54,7 +56,10 @@ namespace MatrixApi.Controllers
             }
         } 
 
-        // POST api/projects
+        /// <summary>
+        /// Adds a project to the database with form post to url api/projects
+        /// </summary>
+        /// <param name="value">Project data in the form post that conforms to api project properties</param>
         public void Post([FromBody]Project value)
         {
             using (var session = NHibernateHelper.GetCurrentSession())
@@ -64,6 +69,11 @@ namespace MatrixApi.Controllers
         }
 
         // PUT api/projects/5
+        /// <summary>
+        /// Updates an existing project ("n") in the databas with a form post to api/projects/n, where "n" is the id parameter of the project to update
+        /// </summary>
+        /// <param name="id">The project ID to update</param>
+        /// <param name="value">The updated project to save</param>
         public void Put(int id, [FromBody]Project value)
         {
             using (var session = NHibernateHelper.GetCurrentSession())
