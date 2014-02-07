@@ -1,11 +1,13 @@
 ﻿using System.Linq;
 using System.Web.Http;
 using MatrixApi.Domain;
+using MatrixApi.Filters;
 using MatrixApi.Helpers;
 using NHibernate.Linq;
 
 namespace MatrixApi.Controllers
 {
+    [BasicAuthenticationFilter]
     public class TicketsController : ApiController
     {
 
@@ -25,6 +27,7 @@ namespace MatrixApi.Controllers
         /// Saves a new ticket to the database with form post to url api/tickets
         /// </summary>
         /// <param name="value">Ticket data in the form post that conforms to the api ticket structure</param>
+        
         public void Post([FromBody]Ticket value)
         {
             var session = NHibernateHelper.GetCurrentSession();

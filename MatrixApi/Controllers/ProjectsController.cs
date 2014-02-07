@@ -2,16 +2,18 @@
 using System.Linq;
 using System.Web.Http;
 using MatrixApi.Domain;
+using MatrixApi.Filters;
 using MatrixApi.Helpers;
 using NHibernate.Linq;
 using StackExchange.Profiling;
 
 namespace MatrixApi.Controllers
 {
-    //[BasicAuthenticationFilter]
+    
     /// <summary>
     /// This is a test
     /// </summary>
+    [BasicAuthenticationFilter]
     public class ProjectsController : ApiController
     {
 
