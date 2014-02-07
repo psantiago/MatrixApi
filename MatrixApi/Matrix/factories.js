@@ -3,10 +3,11 @@
 
 
 matrixApp.factory('User', function ($http, $q, Base64) {
-    var currentUser = [];
     function changeUser(user) {
-        currentUser = user;
-        // local
+        sessionStorage.userService = angular.toJson(user)
+    }
+    function getCurrentUserFromLocalStorage() {
+        return angular.fromJson(sessionStorage.userService);
     }
     return {
         login: function (user) {
@@ -21,7 +22,7 @@ matrixApp.factory('User', function ($http, $q, Base64) {
                 )
                 .error(
                     function (data, status, headers, config) {
-                        alert(status);
+                        alert("Invalid Login");
                     }
                 );
 
@@ -33,10 +34,10 @@ matrixApp.factory('User', function ($http, $q, Base64) {
             return true;
         },
         getCurrentUser: function () {
-            return currentUser;
+            return getCurrentUserFromLocalStorage();
         },
         isLoggedIn: function () {
-            return currentUser.Id != null;
+            return getCurrentUserFromLocalStorage().Id != null;
         }
     }
 });
