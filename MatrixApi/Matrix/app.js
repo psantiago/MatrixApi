@@ -19,6 +19,21 @@ matrixApp.config(['$httpProvider', function ($httpProvider) {
             }
         }
     });
+    $httpProvider.interceptors.push(function () {
+        return {
+            request: function (config) {
+                console.log(config.method);
+                console.log(config.url);
+                if (config.method == 'GET') {
+                    var separator = config.url.indexOf('?') === -1 ? '?' : '&';
+                    config.url = config.url + separator + 'noCache=' + new Date().getTime();
+                }
+                console.log(config.method);
+                console.log(config.url);
+                return config;
+            }
+        };
+    });
 }]);
 
 matrixApp.run(['$rootScope', '$location', 'User', '$http', 'Base64', function ($rootScope, $location, User, $http, Base64) {
