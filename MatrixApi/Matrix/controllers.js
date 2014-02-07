@@ -99,10 +99,9 @@ matrixApp.controller('LoginController', function ($scope, $http, $location, User
             .then(
                 function (user) {
                     alert("Logged in " + user.Name);
+                    $location.path("/projects");
                 }
             );
-        
-        $location.path("/projects");
     };
 });
 

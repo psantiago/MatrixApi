@@ -10,10 +10,17 @@ matrixApp.factory('User', function ($http, $q, Base64) {
             var deferred = $q.defer();
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.username + ':' + user.password);
             $http.get('/API/Users')
-                .success(function (data, status, headers, config) {
-                    changeUser(data);          
-                    deferred.resolve(data);
-               });
+                .success(
+                    function (data, status, headers, config) {
+                        changeUser(data);          
+                        deferred.resolve(data);
+                    }
+                )
+                .error(
+                    function (data, status, headers, config) {
+                        alert(data.toString());
+                    }
+                );
 
             return deferred.promise;
 
