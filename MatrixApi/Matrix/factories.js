@@ -9,20 +9,14 @@ matrixApp.factory('User', function ($http, $q, Base64) {
         login: function (user) {
             var deferred = $q.defer();
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.username + ':' + user.password);
-            changeUser(user);
-            
-            deferred.resolve(user);
+            $http.get('/API/Users')
+                .success(function (data, status, headers, config) {
+                    changeUser(data);          
+                    deferred.resolve(data);
+               });
 
             return deferred.promise;
 
-            //$http.get('/API/AUTHENTICATE')
-            //    .success(function (username) {
-            //            var user = [];
-            //            user.username = username;
-            //            changeUser(user);
-            //            success(user);
-            //        })
-            //    .error(error);
         },
         logout: function () {
             currentUser = [];
