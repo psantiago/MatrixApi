@@ -21,7 +21,7 @@ namespace MatrixApi.Filters
         {
             using (var session = NHibernateHelper.GetCurrentSession())
             {
-                var result = session.Query<User>().FirstOrDefault(u => u.Email == username && u.Password == password);
+                var result = session.Query<User>().FirstOrDefault(u => u.Email.ToLower() == username.ToLower() && u.Password == password);
                 return result != null;
             }
         }
