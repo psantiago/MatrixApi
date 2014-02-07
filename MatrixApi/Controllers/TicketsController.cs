@@ -45,6 +45,7 @@ namespace MatrixApi.Controllers
         {
             var session = NHibernateHelper.GetCurrentSession();
             session.Update(value);
+            session.Flush();
         }
 
         /// <summary>
@@ -56,6 +57,7 @@ namespace MatrixApi.Controllers
             var session = NHibernateHelper.GetCurrentSession();
             var ticket = session.Get<Ticket>(id);
             session.Delete(ticket);
+            session.Flush();
         }
     }
 }

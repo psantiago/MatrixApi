@@ -187,6 +187,7 @@
     <Content Include="Partials\Logout.html" />
     <Content Include="Partials\Login.html" />
     <Content Include="Partials\ProjectEdit.html" />
+    <Content Include="Partials\TicketEdit.html" />
     <Content Include="Partials\TicketCreate.html" />
     <Content Include="Partials\ProjectCreate.html" />
     <Content Include="Partials\Project.html" />
