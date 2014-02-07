@@ -1,6 +1,6 @@
 ﻿<a class="menu-box" href="#/project/create"><span class="menu-title"><i class="fa fa-plus-circle"></i> New Project</span></a>
 
-<div class="project-box" data-ng-repeat="project in projects">
+<div class="project-box" data-ng-repeat="project in projects | orderBy:'Id':true">
 
     <a class="info-link" href="#/projects/{{ project.Id }}">
 
