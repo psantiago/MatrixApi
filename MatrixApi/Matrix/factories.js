@@ -68,6 +68,15 @@ matrixApp.factory('Projects', function ($http, $q) {
                     deferred.resolve(data);
                 });
             return deferred.promise;
+        },
+        editProject: function (project)
+        {
+            var deferred = $q.defer();
+            $http.put("/API/projects/" + project.Id, project)
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                });
+            return deferred.promise;
         }
     }
 });

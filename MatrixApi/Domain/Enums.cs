@@ -2,15 +2,15 @@
 {
     public enum Priority
     {
-        Low,
-        Medium,
-        High
+        Low = 1,
+        Medium = 2,
+        High = 3
     }
 
     public enum Status
     {
-        InProgress,
-        Complete,
-        Pending
+        InProgress = 1,
+        Complete = 2,
+        Pending = 3
     }
 }

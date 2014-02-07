@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.SessionState;
 using MatrixApi.Domain;
 using MatrixApi.Helpers;
 using NHibernate.Linq;
@@ -73,6 +74,7 @@ namespace MatrixApi.Controllers
         {
             var session = NHibernateHelper.GetCurrentSession();
             session.Save(value);
+            NHibernateHelper.CloseSession();
         }
 
         // PUT api/projects/5
@@ -83,19 +85,24 @@ namespace MatrixApi.Controllers
         /// <param name="value">The updated project to save</param>
         public void Put(int id, [FromBody]Project value)
         {
+            value.Tickets = null;
             var session = NHibernateHelper.GetCurrentSession();
             session.Update(value);
+
+            NHibernateHelper.CloseSession();
         }
 
         /// <summary>
         /// Deletes the specified project
         /// </summary>
         /// <param name="id">The project ID to delete</param>
+        [AcceptVerbs("DELETE")]
         public void Delete(int id)
         {
             var session = NHibernateHelper.GetCurrentSession();
             var project = session.Get<Project>(id);
             session.Delete(project);
+            NHibernateHelper.CloseSession();
         }
     }
 }

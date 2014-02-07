@@ -1,0 +1,24 @@
+﻿
+<div class="create-box">
+    <a class="back-link" href="javascript:history.back();"><span class="fa fa-arrow-circle-left"></span></a> <h2>Edit Project</h2>
+    <label>Title</label>
+    <input type="text" data-ng-model="project.Title" />
+    <label>Description</label>
+    <input type="text" data-ng-model="project.Description" />
+    <label>Priority</label>
+    <select data-ng-model="project.Priority">
+        <option value="1">Low</option>
+        <option value="2">Medium</option>
+        <option value="3">High</option>
+    </select>
+    <label>Status</label>
+    <select data-ng-model="project.Status">
+        <option value="1">In Progress</option>
+        <option value="2">Complete</option>
+        <option value="3">Pending</option>
+    </select>
+    <label>Deadline</label>
+    <input type="date" data-ng-model="project.Deadline" />
+
+    <button data-ng-click="editProject()" class="button-submit"><span class="fa fa-plus-circle"></span> Update Project</button>
+</div>
