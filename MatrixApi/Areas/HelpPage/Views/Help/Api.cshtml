@@ -6,15 +6,15 @@
     ViewBag.Title = description.HttpMethod.Method + " " + description.RelativePath;
 }
 
-<div id="body">
-    <section class="featured">
+<div id="body" class="api-content-box">
+    <section class="wrap featured">
         <div class="content-wrapper">
-            <p>
+            <h1>
                 @Html.ActionLink("Help Page Home", "Index")
-            </p>
+            </h1>
         </div>
     </section>
-    <section class="content-wrapper main-content clear-fix">
+    <section class="content-wrapper main-content clear-fix wrap">
         @Html.DisplayFor(m => Model)
     </section>
 </div>

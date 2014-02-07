@@ -1,7 +1,8 @@
 ﻿
-<div >
-
-        <h2>{{ ticket.Title }}</h2>
+<div class="ticket-box">
+    <div class="ticket-wrap">
+        <a class="back-link" href="javascript:history.back();"><span class="fa fa-arrow-circle-left"></span></a> <h2>Back to Project</h2>
+        <h3>{{ ticket.Title }}</h3>
         <p>{{ ticket.Description }}</p>
 
         <div data-ng-repeat="comment in ticket.comments">
@@ -13,9 +14,12 @@
 
         <div>
             <!-- Create Comment Form -->
+            <hr />
+            <p class="intstruction">Have something to add?</p>
             <input type="hidden" data-ng-model="newComment.TicketId" value="{{ ticket.Id }}" />
-            <input type="text" data-ng-model="newComment.Body" />
+            <input class="comment" type="text" data-ng-model="newComment.Body" />
 
-            <button data-ng-click="addComment()">Add Comment</button>
+            <button class="button-submit" data-ng-click=" addcomment()"><span class="fa fa-comment"></span> Add Comment</button>
         </div>
+    </div>
 </div>
