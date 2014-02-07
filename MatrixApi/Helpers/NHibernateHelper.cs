@@ -1,31 +1,33 @@
 ﻿using System.Web;
 using NHibernate;
 using NHibernate.Cfg;
+using StackExchange.Profiling;
 
 namespace MatrixApi.Helpers
 {
     public sealed class NHibernateHelper
     {
         private const string CurrentSessionKey = "nhibernate.current_session";
-        private static readonly ISessionFactory SessionFactory;
 
-        static NHibernateHelper()
-        {
-            SessionFactory = new Configuration().Configure().BuildSessionFactory();
-        }
-
+        public static ISessionFactory SessionFactory { private get; set; }
+        
         public static ISession GetCurrentSession()
         {
-            var context = HttpContext.Current;
-            var currentSession = context.Items[CurrentSessionKey] as ISession;
+            var profiler = MiniProfiler.Current;
 
-            if (currentSession == null)
+            using (profiler.Step("Get session inner"))
             {
-                currentSession = SessionFactory.OpenSession();
-                context.Items[CurrentSessionKey] = currentSession;
-            }
+                var context = HttpContext.Current;
+                var currentSession = context.Items[CurrentSessionKey] as ISession;
 
-            return currentSession;
+                if (currentSession == null)
+                {
+                    currentSession = SessionFactory.OpenSession();
+                    context.Items[CurrentSessionKey] = currentSession;
+                }
+
+                return currentSession;
+            }
         }
 
         public static void CloseSession()

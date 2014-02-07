@@ -12,12 +12,12 @@
     <property name="Priority" />
     <property name="Status" />
     <property name="Deadline" />
-    <many-to-one name="Project" column="ProjectId" lazy="false"/>
-    <bag name="Comments" lazy="false">
+    <many-to-one name="Project" column="ProjectId"/>
+    <bag name="Comments">
       <key column="TicketId" />
       <one-to-many class="Comment" />
     </bag>
-    <many-to-one name="User" class="User" column="UserId" unique="true" lazy="false" />
+    <many-to-one name="User" class="User" column="UserId" unique="true" />
   </class>
 
 </hibernate-mapping>

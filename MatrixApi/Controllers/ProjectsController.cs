@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using MatrixApi.Domain;
 using MatrixApi.Helpers;
+using NHibernate.Linq;
+using StackExchange.Profiling;
 
 namespace MatrixApi.Controllers
 {
@@ -18,9 +21,20 @@ namespace MatrixApi.Controllers
         /// <returns>A list of projects</returns>
         public IEnumerable<Project> Get()
         {
-            var session = NHibernateHelper.GetCurrentSession();
-            var result = session.CreateCriteria<Project>().List<Project>();
-            return result;
+            var profiler = MiniProfiler.Current;
+
+            var session = default (NHibernate.ISession);
+            using (profiler.Step("Get session"))
+            {
+                session = NHibernateHelper.GetCurrentSession();
+            }
+            var result = default(IQueryable<Project>);
+            using (profiler.Step("Get data"))
+            {
+                result = session.Query<Project>()
+                    .FetchMany(p => p.Tickets);
+                return result;
+            }
         }
 
         /// <summary>

@@ -12,7 +12,7 @@
       <property name="Priority" />
       <property name="Status" />
       <property name="Deadline" />
-      <bag name="Tickets" lazy="false">
+      <bag name="Tickets">
         <key column="ProjectId" />
         <one-to-many class="Ticket" />
       </bag>

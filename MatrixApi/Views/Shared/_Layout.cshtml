@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using StackExchange.Profiling
+<!DOCTYPE html>
 <html data-ng-app="matrixApp">
 <head>
     <meta charset="utf-8" />
@@ -9,7 +10,6 @@
     <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
     <header>
         <a class="title" href="#">The Matrix</a>
 
@@ -26,6 +26,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @MiniProfiler.RenderIncludes()
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 </body>

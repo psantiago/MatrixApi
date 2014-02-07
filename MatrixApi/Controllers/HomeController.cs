@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using StackExchange.Profiling;
 
 namespace MatrixApi.Controllers
 {
@@ -10,6 +11,7 @@ namespace MatrixApi.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
+            var profiler = MiniProfiler.Current;
             ViewBag.Title = "Home Page";
 
             return View();
