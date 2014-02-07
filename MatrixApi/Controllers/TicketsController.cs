@@ -16,11 +16,9 @@ namespace MatrixApi.Controllers
         /// <returns>A ticket</returns>
         public Ticket Get(int id)
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                var result = session.Get<Ticket>(id);
-                return result;
-            }
+            var session = NHibernateHelper.GetCurrentSession();
+            var result = session.Get<Ticket>(id);
+            return result;
         }
 
         /// <summary>
@@ -29,12 +27,10 @@ namespace MatrixApi.Controllers
         /// <param name="value">Ticket data in the form post that conforms to the api ticket structure</param>
         public void Post([FromBody]Ticket value)
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                value.User = session.Query<User>().First(u => u.Email == User.Identity.Name);
-                value.Project = session.Load<Project>(value.ProjectId);
-                session.Save(value);
-            }
+            var session = NHibernateHelper.GetCurrentSession();
+            value.User = session.Query<User>().First(u => u.Email == User.Identity.Name);
+            value.Project = session.Load<Project>(value.ProjectId);
+            session.Save(value);
         }
 
         /// <summary>
@@ -44,10 +40,8 @@ namespace MatrixApi.Controllers
         /// <param name="value">Updated ticket in the form post</param>
         public void Put(int id, [FromBody]Ticket value)
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                session.Update(value);
-            }
+            var session = NHibernateHelper.GetCurrentSession();
+            session.Update(value);
         }
     }
 }

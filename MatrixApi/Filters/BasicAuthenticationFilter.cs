@@ -19,11 +19,9 @@ namespace MatrixApi.Filters
 
         protected override bool OnAuthorizeUser(string username, string password, HttpActionContext actionContext)
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                var result = session.Query<User>().FirstOrDefault(u => u.Email.ToLower() == username.ToLower() && u.Password == password);
-                return result != null;
-            }
+            var session = NHibernateHelper.GetCurrentSession();
+            var result = session.Query<User>().FirstOrDefault(u => u.Email.ToLower() == username.ToLower() && u.Password == password);
+            return result != null;
         }
     }
 }

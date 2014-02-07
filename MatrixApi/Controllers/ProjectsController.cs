@@ -18,12 +18,9 @@ namespace MatrixApi.Controllers
         /// <returns>A list of projects</returns>
         public IEnumerable<Project> Get()
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                var result = session.CreateCriteria<Project>().List<Project>();
-                return result;
-            }
-
+            var session = NHibernateHelper.GetCurrentSession();
+            var result = session.CreateCriteria<Project>().List<Project>();
+            return result;
         }
 
         /// <summary>
@@ -33,11 +30,9 @@ namespace MatrixApi.Controllers
         /// <returns>A Project</returns>
         public Project Get(int id)
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                var result = session.Get<Project>(id);
-                return result;
-            }
+            var session = NHibernateHelper.GetCurrentSession();
+            var result = session.Get<Project>(id);
+            return result;
         }
 
         /// <summary>
@@ -62,10 +57,8 @@ namespace MatrixApi.Controllers
         /// <param name="value">Project data in the form post that conforms to api project properties</param>
         public void Post([FromBody]Project value)
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                session.Save(value);
-            }
+            var session = NHibernateHelper.GetCurrentSession();
+            session.Save(value);
         }
 
         // PUT api/projects/5
@@ -76,10 +69,8 @@ namespace MatrixApi.Controllers
         /// <param name="value">The updated project to save</param>
         public void Put(int id, [FromBody]Project value)
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                session.Update(value);
-            }
+            var session = NHibernateHelper.GetCurrentSession();
+            session.Update(value);
         }
     }
 }

@@ -17,11 +17,9 @@ namespace MatrixApi.Controllers
         [BasicAuthenticationFilter]
         public User Get()
         {
-            using (var session = NHibernateHelper.GetCurrentSession())
-            {
-                var result = session.Query<User>().FirstOrDefault(u => u.Email == User.Identity.Name);
-                return result;
-            }
+            var session = NHibernateHelper.GetCurrentSession();
+            var result = session.Query<User>().FirstOrDefault(u => u.Email == User.Identity.Name);
+            return result;
         }
     }
 }
