@@ -115,6 +115,7 @@ matrixApp.controller('TicketController', function ($scope, $http, $routeParams, 
         .then(
             function (data, status, headers, config) {
                 // you can do some processing here
+                console.log(data)
                 $scope.ticket = data;
             }
         );
@@ -124,7 +125,7 @@ matrixApp.controller('TicketController', function ($scope, $http, $routeParams, 
         Comments.createComment($scope.newComment)
             .then(
                 function (data, status, headers, config) {
-                    $location.path("/tickets/" + $routeParams.ticketId);
+                    $scope.ticket.Comments.push(data);
                 }
             );
     };

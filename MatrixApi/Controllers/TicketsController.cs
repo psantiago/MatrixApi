@@ -19,8 +19,10 @@ namespace MatrixApi.Controllers
         public Ticket Get(int id)
         {
             var session = NHibernateHelper.GetCurrentSession();
-            var result = session.Get<Ticket>(id);
-            return result;
+            var result = session.Query<Ticket>()
+                .Where(t => t.Id == id)
+                .FetchMany(t => t.Comments);
+            return result.FirstOrDefault();
         }
 
         /// <summary>
