@@ -1,15 +1,16 @@
-﻿<a href="#/projects/{{ project.Id }}/create">New Ticket</a>
-<div >
+﻿<a class="menu-box" href="#/projects/{{ project.Id }}/create"><span class="menu-title"><i class="fa fa-plus-circle"></i> New Ticket</span></a>
 
-        <h2>{{ project.Title }}</h2>
-        <p>{{ project.Description }}</p>
+<div class="ticket-box">
 
-        <div data-ng-repeat="ticket in project.Tickets">
-            <a class="comment" href="#/tickets/{{ ticket.Id}}">
-                <p>{{ ticket.Title }}</p>
+    <div class="project-description"> <a class="back-link" href="javascript:history.back();"><span class="fa fa-arrow-circle-left"></span></a> <h2>{{ project.Title }}</h2>
+        <p> {{ project.Description }}</p>
+    </div>
 
-            </a>
-        </div>
+    <div class="ticket-description" data-ng-repeat="ticket in project.Tickets">
+        <a class="comment" href="#/tickets/{{ ticket.Id}}">
+            <span class="fa fa-ticket"></span> {{ ticket.Title }}
+        </a>
+    </div>
 
 
 </div>
