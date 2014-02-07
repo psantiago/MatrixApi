@@ -12,7 +12,7 @@
     <property name="Priority" />
     <property name="Status" />
     <property name="Deadline" />
-    <many-to-one name="Project" column="ProjectId"/>
+    <many-to-one name="Project" column="ProjectId" cascade="none" update="false" />
     <bag name="Comments" cascade="none" inverse="true">
       <key column="TicketId" />
       <one-to-many class="Comment" />

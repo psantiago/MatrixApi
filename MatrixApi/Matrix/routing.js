@@ -31,6 +31,11 @@ matrixApp.config(function ($routeProvider) {
                 controller: 'TicketController',
                 templateUrl: 'Partials/Ticket.html'
             })
+        .when('/tickets/edit/:ticketId',
+            {
+                controller: 'TicketEditController',
+                templateUrl: 'Partials/TicketEdit.html'
+            })
         .when('/login',
             {
                 controller: 'LoginController',

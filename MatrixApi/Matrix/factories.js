@@ -12,7 +12,6 @@ matrixApp.factory('User', function ($http, $q, Base64) {
     return {
         login: function (user) {
             var deferred = $q.defer();
-            console.log(user);
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.username + ':' + user.password);
             $http.get('/API/Users')
                 .success(
@@ -103,6 +102,43 @@ matrixApp.factory('Tickets', function ($http, $q) {
         createTicket: function (ticket) {
             var deferred = $q.defer();
             $http.post("/API/tickets", ticket)
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                });
+            return deferred.promise;
+        },
+        editTicket: function (ticket) {
+            var deferred = $q.defer();
+            $http.put("/API/tickets/" + ticket.Id, ticket)
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                });
+            return deferred.promise;
+        },
+        deleteTicket: function (ticketId) {
+            var deferred = $q.defer();
+            $http.delete("/API/tickets/" + ticketId)
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                });
+            return deferred.promise;
+        }
+    }
+});
+
+matrixApp.factory('Comments', function ($http, $q) {
+    return {
+        createComment: function (comment) {
+            var deferred = $q.defer();
+            $http.post("/API/comments", comment)
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                });
+            return deferred.promise;
+        },
+        deleteComment: function (commentId) {
+            var deferred = $q.defer();
+            $http.delete("/API/comments/" + commentId)
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 });

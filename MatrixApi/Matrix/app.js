@@ -23,8 +23,9 @@ matrixApp.config(['$httpProvider', function ($httpProvider) {
 
 matrixApp.run(['$rootScope', '$location', 'User', '$http', 'Base64', function ($rootScope, $location, User, $http, Base64) {
     var user = angular.fromJson(localStorage.user);
-    console.log(user)
-    $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.Email + ':' + user.Password);
+    if (user != null) {
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.Email + ':' + user.Password);
+    }
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         $rootScope.error = null;
         if (!User.isLoggedIn())

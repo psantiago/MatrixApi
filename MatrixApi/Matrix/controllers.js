@@ -17,19 +17,23 @@ matrixApp.controller('ProjectListController', function ($scope, $http, Projects,
         $location.path("/projects/edit/" + projectId);
     };
 
-    $scope.delete = function (project) {
-        Project.deleteProject(project.Id)
+    $scope.delete = function (projectId) {
+        Projects.deleteProject(projectId)
             .then(
                 function (data) {
-                    project = null;
+                    for (var i = 0; i < $scope.projects.length; i++) {
+                        if ($scope.projects[i].Id == projectId) {
+                            $scope.projects.splice(i, 1);
+                        }
+                    }
                 }
             );
     };
 });
 
-matrixApp.controller('ProjectController', function ($scope, $http, Projects, $routeParams, $location) {
+matrixApp.controller('ProjectController', function ($scope, $http, Projects, Tickets, $routeParams, $location) {
     var projectId = $routeParams.projectId;
-    $scope.projects = [];
+    $scope.project = [];
 
     init();
 
@@ -41,6 +45,22 @@ matrixApp.controller('ProjectController', function ($scope, $http, Projects, $ro
                 }
             );
     }
+    $scope.edit = function (ticketId) {
+        $location.path("/tickets/edit/" + ticketId);
+    };
+
+    $scope.delete = function (ticketId) {
+        Tickets.deleteTicket(ticketId)
+            .then(
+                function (data) {
+                    for (var i = 0; i < $scope.project.Tickets.length; i++) {
+                        if ($scope.project.Tickets[i].Id == ticketId) {
+                            $scope.project.Tickets.splice(i, 1);
+                        }
+                    }
+                }
+            );
+    };
 });
 
 matrixApp.controller('ProjectCreateController', function ($scope, $http, Projects, $location) {
@@ -70,7 +90,6 @@ matrixApp.controller('ProjectEditController', function ($scope, $http, Projects,
         Projects.getProject(projectId)
             .then(
                 function (data) {
-                    console.log(data)
                     $scope.project = data;
                 }
             );
@@ -86,11 +105,11 @@ matrixApp.controller('ProjectEditController', function ($scope, $http, Projects,
     };
 });
 
-matrixApp.controller('TicketController', function ($scope, $http, $routeParams, Tickets) {
+matrixApp.controller('TicketController', function ($scope, $http, $routeParams, $location, Tickets, Comments) {
 
     var ticketId = $routeParams.ticketId;
 
-    $scope.projects = [];
+    $scope.ticket = [];
 
     Tickets.getTicket(ticketId)
         .then(
@@ -101,14 +120,26 @@ matrixApp.controller('TicketController', function ($scope, $http, $routeParams, 
         );
 
     $scope.addComment = function () {
-        $http.post("/API/comments", $scope.newComment)
-        .success(function (data, status, headers, config) {
-            $location.path("/ticket/" + $routeParams.ticketId);
-        }).error(function (data, status, headers, config) {
-            alert("error");
-        });
+        $scope.newComment.TicketId = $routeParams.ticketId;
+        Comments.createComment($scope.newComment)
+            .then(
+                function (data, status, headers, config) {
+                    $location.path("/tickets/" + $routeParams.ticketId);
+                }
+            );
     };
-
+    $scope.deleteComment = function (commentId) {
+        Comments.deleteComment(commentId)
+            .then(
+                function (data) {
+                    for (var i = 0; i < $scope.ticket.Comments.length; i++) {
+                        if ($scope.ticket.Comments[i].Id == commentId) {
+                            $scope.ticket.Comments.splice(i, 1);
+                        }
+                    }
+                }
+            );
+    };
 });
 
 
@@ -123,6 +154,29 @@ matrixApp.controller('TicketCreateController', function ($scope, $http, $routePa
             .then(
                 function (data, status, headers, config) {
                     $location.path("/project/" + $routeParams.projectId);
+                }
+            );
+    };
+});
+
+matrixApp.controller('TicketEditController', function ($scope, $http, Tickets, $routeParams, $location) {
+    var ticketId = $routeParams.ticketId;
+
+    init();
+    function init() {
+        Tickets.getTicket(ticketId)
+            .then(
+                function (data) {
+                    $scope.ticket = data;
+                }
+            );
+    }
+
+    $scope.editTicket = function () {
+        Tickets.editTicket($scope.ticket)
+            .then(
+                function (data, status, headers, config) {
+                    $location.path("/tickets/" + ticketId);
                 }
             );
     };

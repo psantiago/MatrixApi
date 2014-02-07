@@ -102,6 +102,7 @@ namespace MatrixApi.Controllers
             var session = NHibernateHelper.GetCurrentSession();
             var project = session.Get<Project>(id);
             session.Delete(project);
+            session.Flush();
             NHibernateHelper.CloseSession();
         }
     }
