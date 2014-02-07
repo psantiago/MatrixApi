@@ -18,7 +18,7 @@ matrixApp.factory('User', function ($http, $q, Base64) {
                 )
                 .error(
                     function (data, status, headers, config) {
-                        alert(data.toString());
+                        alert(status);
                     }
                 );
 
