@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Web.SessionState;
 using MatrixApi.Domain;
 using MatrixApi.Helpers;
 using NHibernate.Linq;
@@ -32,8 +31,7 @@ namespace MatrixApi.Controllers
             var result = default(IQueryable<Project>);
             using (profiler.Step("Get data"))
             {
-                result = session.Query<Project>()
-                    .FetchMany(p => p.Tickets);
+                result = session.Query<Project>();
                 return result;
             }
         }
@@ -83,12 +81,12 @@ namespace MatrixApi.Controllers
         /// </summary>
         /// <param name="id">The project ID to update</param>
         /// <param name="value">The updated project to save</param>
+        [AcceptVerbs("PUT")]
         public void Put(int id, [FromBody]Project value)
         {
-            value.Tickets = null;
             var session = NHibernateHelper.GetCurrentSession();
             session.Update(value);
-
+            session.Flush();
             NHibernateHelper.CloseSession();
         }
 
