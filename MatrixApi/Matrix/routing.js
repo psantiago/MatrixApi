@@ -36,5 +36,5 @@ matrixApp.config(function ($routeProvider) {
                 controller: 'LogoutController',
                 templateUrl: 'Partials/Logout.html'
             })
-        .otherwise({ redirectTo: '/login' });
+        .otherwise({ redirectTo: '/projects' });
 });
