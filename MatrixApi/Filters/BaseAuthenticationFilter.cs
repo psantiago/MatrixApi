@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
+using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using MatrixApi.Models;
@@ -69,8 +70,8 @@ namespace MatrixApi.Filters
                 Thread.CurrentPrincipal = principal;
 
                 // inside of ASP.NET this is required
-                //if (HttpContext.Current != null)
-                //    HttpContext.Current.User = principal;
+                if (HttpContext.Current != null)
+                    HttpContext.Current.User = principal;
 
                 base.OnAuthorization(actionContext);
             }
