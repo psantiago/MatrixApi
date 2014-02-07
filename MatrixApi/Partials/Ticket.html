@@ -4,6 +4,10 @@
         <a class="back-link" href="javascript:history.back();"><span class="fa fa-arrow-circle-left"></span></a> <h2>Back to Project</h2>
         <h3>{{ ticket.Title }}</h3>
         <p>{{ ticket.Description }}</p>
+        <p><u>Deadline</u>:&nbsp; {{ ticket.Deadline }}</p>
+        <p><u>Priority</u>: <span class="priority-{{ ticket.Priority }}">{{ ticket.Priority }}</span></p>
+
+        <span ng-if="{{ ticket.Priority == 1}}">Low</span>
 
         <div data-ng-repeat="comment in ticket.comments">
             <div class="comment">
@@ -12,10 +16,10 @@
             </div>
         </div>
 
-        <div>
+        <div class="">
             <!-- Create Comment Form -->
             <hr />
-            <p class="intstruction">Have something to add?</p>
+            <p class="intstruction">YO DAWG, Have something to say YO?</p>
             <input type="hidden" data-ng-model="newComment.TicketId" value="{{ ticket.Id }}" />
             <input class="comment" type="text" data-ng-model="newComment.Body" />
 

@@ -5,7 +5,8 @@
     <a class="info-link" href="#/projects/{{ project.Id }}">
 
         <h2 class="info-title">{{ project.Title }}</h2>
-        <span>{{ project.Tickets.length }} tickets</span>
+        <span class="project-tickets">&nbsp; {{ project.Tickets.length }}  tickets</span>
+        <span class="block"><u>Deadline</u>:&nbsp; {{ project.Deadline | date:'medium' }}</span>
 
     </a>
 

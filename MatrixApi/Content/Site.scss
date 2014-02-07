@@ -3,6 +3,7 @@
 $font-stack: 'Yanone Kaffeesatz', sans-serif;
 
 /* BASic bitches */
+.block { display: block; }
 
 /* LAYOUT */
 
@@ -15,6 +16,7 @@ $font-stack: 'Yanone Kaffeesatz', sans-serif;
 
 .info-link, .action-options {padding:2em; display:block;}
 	.info-title { margin: 0; }
+	.project-tickets { color: #888; }
 
 .project-description { padding: 2em; }
 .ticket-description { padding: .5em 0; margin: 0 2em; border-top: .0625em solid #ccc; 
@@ -33,7 +35,7 @@ $font-stack: 'Yanone Kaffeesatz', sans-serif;
 	}
 }
 
-.create-box { background: #fff; border-top: .5em solid #222;
+.create-box,.ticket-box { background: #fff; border-top: .5em solid #222;
 	.create-wrap {padding:2em;}
 	label {width:100%; display:block; font-size:1.25em; margin: .5em 0 .25em 0; }
 	input {margin-bottom:0.5em; font-size: 1em; line-height: 2em; height: 2em;
@@ -57,6 +59,10 @@ hr {height:1px; border:none; background:#222;}
 .wrap {padding:2em;}
 .wrapped {word-wrap:break-word;}
 .right {float:right;}
+
+.priority-3 {color:red;}
+.priority-2 {color:yellow;}
+.priority-1 {color:green;}
 
 /* MODULE */
 
