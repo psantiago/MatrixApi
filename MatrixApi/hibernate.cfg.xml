@@ -4,7 +4,7 @@
     <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
     <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
     <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
-    <property name="connection.connection_string">Data Source=tcp:ib6pzcr2kl.database.windows.net,1433;Initial Catalog=matrixapi2;User ID=neo@ib6pzcr2kl;Password=Red1orBlue1</property>
+    <property name="connection.connection_string">Data Source=tcp:svar97q428.database.windows.net,1433;Initial Catalog=TheMatrixRevolutions;User ID=hwuser;Password=2374MS5wYHk3HwE</property>
     
     <property name="show_sql">true</property>
     <mapping assembly="MatrixApi"/>
