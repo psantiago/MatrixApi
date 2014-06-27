@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using MatrixApi.Domain;
 using MatrixApi.Filters;
 using MatrixApi.Helpers;
@@ -13,7 +14,8 @@ namespace MatrixApi.Controllers
     /// <summary>
     /// This is a test
     /// </summary>
-    [BasicAuthenticationFilter]
+    //[BasicAuthenticationFilter]
+    [EnableCors("*", "*", "*")]
     public class ProjectsController : ApiController
     {
 

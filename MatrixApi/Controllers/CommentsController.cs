@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using MatrixApi.Domain;
 using MatrixApi.Filters;
 using MatrixApi.Helpers;
@@ -8,6 +9,7 @@ using NHibernate.Linq;
 
 namespace MatrixApi.Controllers
 {
+    [EnableCors("*", "*", "*")]
     [BasicAuthenticationFilter] 
     public class CommentsController : ApiController
     {
