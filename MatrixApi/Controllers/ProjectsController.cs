@@ -15,7 +15,7 @@ namespace MatrixApi.Controllers
     /// This is a test
     /// </summary>
     [BasicAuthenticationFilter]
-    [EnableCors("*", "*", "*")]
+    //[EnableCors("*", "*", "*")]
     public class ProjectsController : ApiController
     {
 
